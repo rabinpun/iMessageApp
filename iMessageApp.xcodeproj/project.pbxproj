@@ -57,6 +57,8 @@
 		6AA00C18296BBFB0009FB656 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		6AA00C1A296BBFB2009FB656 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6AA00C1C296BBFB2009FB656 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AA00C24296BC213009FB656 /* iMessageApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iMessageApp.entitlements; sourceTree = "<group>"; };
+		6AA00C25296BC296009FB656 /* iMessageExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iMessageExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		6AA00BF7296BBE2D009FB656 /* iMessageApp */ = {
 			isa = PBXGroup;
 			children = (
+				6AA00C24296BC213009FB656 /* iMessageApp.entitlements */,
 				6AA00BF8296BBE2D009FB656 /* AppDelegate.swift */,
 				6AA00BFA296BBE2D009FB656 /* SceneDelegate.swift */,
 				6AA00BFC296BBE2D009FB656 /* ViewController.swift */,
@@ -121,6 +124,7 @@
 		6AA00C14296BBFB0009FB656 /* iMessageExtension */ = {
 			isa = PBXGroup;
 			children = (
+				6AA00C25296BC296009FB656 /* iMessageExtension.entitlements */,
 				6AA00C15296BBFB0009FB656 /* MessagesViewController.swift */,
 				6AA00C17296BBFB0009FB656 /* MainInterface.storyboard */,
 				6AA00C1A296BBFB2009FB656 /* Assets.xcassets */,
@@ -395,6 +399,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iMessageApp/iMessageApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K7AB4TLJ34;
@@ -424,6 +429,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iMessageApp/iMessageApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K7AB4TLJ34;
@@ -451,6 +457,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = iMessageExtension/iMessageExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K7AB4TLJ34;
@@ -458,7 +465,7 @@
 				INFOPLIST_FILE = iMessageExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iMessageExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -478,6 +485,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = iMessageExtension/iMessageExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K7AB4TLJ34;
@@ -485,7 +493,7 @@
 				INFOPLIST_FILE = iMessageExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iMessageExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
