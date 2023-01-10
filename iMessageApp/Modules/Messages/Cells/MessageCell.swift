@@ -52,7 +52,6 @@ final class MessageCell: UICollectionViewCell {
             wrapperView.addSubview(label)
             
             NSLayoutConstraint.activate([
-                
                 wrapperView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
                 wrapperView.leadingAnchor.constraint(equalTo: contentView.trailingAnchor),
                 wrapperView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -62,7 +61,6 @@ final class MessageCell: UICollectionViewCell {
                 label.leadingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -5),
                 label.topAnchor.constraint(equalTo: wrapperView.topAnchor, constant: 5),
                 label.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor, constant: -5),
-            
             ])
         }
         
