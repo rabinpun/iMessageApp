@@ -7,12 +7,14 @@
 
 import UIKit
 
-class MessegesViewController: UIViewController {
+class MessegesViewController: BaseController {
 
+    lazy var screenView: MessagesView = { baseView as! MessagesView }()
+    
+    lazy var viewModel: MessagesViewModel = { baseViewModel as! MessagesViewModel }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
-        // Do any additional setup after loading the view.
     }
 
 
