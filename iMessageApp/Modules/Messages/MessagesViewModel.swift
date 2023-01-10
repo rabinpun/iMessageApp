@@ -9,6 +9,54 @@ import Foundation
 
 final class MessagesViewModel: BaseViewModel {
     
-    var messages = ["Hello World!", "This is the second message.", "And this one is third."]
+    var messages = [
+        "Hello World!",
+        "This is the second message.",
+        "And this one is third.",
+        
+            "Hello World!",
+            "This is the second message.",
+            "And this one is third.",
+        
+            "Hello World!",
+            "This is the second message.",
+            "And this one is third.",
+        
+            "Hello World!",
+            "This is the second message.",
+            "And this one is third.",
+        
+            "Hello World!",
+            "This is the second message.",
+            "And this one is third.",
+        
+            "Hello World!",
+            "This is the second message.",
+            "And this one is third.",
+        
+            "Hello World!",
+            "This is the second message.",
+            "And this one is third.",
+        
+            "Hello World!",
+            "This is the second message.",
+            "And this one is third.",
+        
+            "Hello World!",
+            "This is the second message.",
+            "And this one is third.",
+        "Hello World!",
+        "This is the second message.",
+        "And this one is third.",
+        "Hello World!",
+        "This is the second message.",
+        "And this one is third.",
+        "Hello World!",
+        "This is the second message.",
+        "And this one is third.",
+        "Hello World!",
+        "This is the second message.",
+        "And this one is third.",
+    ]
     
 }
