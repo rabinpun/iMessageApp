@@ -16,7 +16,7 @@ class CoreDataRepository<T: NSManagedObjectUpdaterProtocol>: Repository {
     private let database: CoreDataStack
     private let relationEntities: [String]
     
-    init(inMainContext: Bool = false, database: CoreDataStack, relationEntities: [String]) {
+    init(inMainContext: Bool, database: CoreDataStack, relationEntities: [String]) {
         self.inMainContext = inMainContext
         self.database = database
         self.relationEntities = relationEntities
@@ -30,19 +30,6 @@ class CoreDataRepository<T: NSManagedObjectUpdaterProtocol>: Repository {
         
         let _ = createEntity(from: entityObject)
          try getContext().save()
-    }
-    
-    func findOrCreate(with predicate: NSPredicate) -> NSManagedObject? {
-        var entity: T.Entity!
-        let context = getContext()
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: T.Entity.entityName)
-        request.predicate = predicate
-        if let result = try! context.fetch(request) as? [NSManagedObject], result.count > 0 {
-            entity = (result.first! as! T.Entity)
-        } else {
-            entity = T.Entity(entity:  NSEntityDescription.entity(forEntityName: T.Entity.entityName, in: context)!, insertInto: context)
-        }
-        return entity
     }
     
     @discardableResult
@@ -78,7 +65,7 @@ class CoreDataRepository<T: NSManagedObjectUpdaterProtocol>: Repository {
          try context.save()
     }
     
-    func fetch(with predicate: NSPredicate?) -> T? {
+    func fetch(with predicate: NSPredicate?) -> [T] {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: T.Entity.entityName)
         request.returnsObjectsAsFaults = false
         if let predicate = predicate {
@@ -87,8 +74,8 @@ class CoreDataRepository<T: NSManagedObjectUpdaterProtocol>: Repository {
         
         let context = getContext()
         let result = try? context.fetch(request) as? [NSManagedObject]
-        guard let entity = result?.first as? T.Entity else { return nil }
-        return entity.createObject() as? T
+        guard let entities = result as? [T.Entity]else { return [] }
+        return entities.compactMap({ $0.createObject() as? T })
     }
     
     func delete(dbContext: NSManagedObjectContext? = nil, predicate: NSPredicate) throws {

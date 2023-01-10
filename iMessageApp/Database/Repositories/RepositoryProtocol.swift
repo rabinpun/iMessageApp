@@ -10,7 +10,7 @@ import CoreData
 
 protocol Repository {
     associatedtype Object: Identifiable
-    func fetch(with predicate: NSPredicate?) -> Object?
+    func fetch(with predicate: NSPredicate?) -> [Object]
     func create(with entityObject: Object) throws
     func update(predicate: NSPredicate?, with entityObject: Object) throws
     func delete(dbContext: NSManagedObjectContext?,predicate: NSPredicate) throws
