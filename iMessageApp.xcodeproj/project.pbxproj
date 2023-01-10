@@ -17,6 +17,13 @@
 		6A3F3CCA296D252800321EE8 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CC9296D252800321EE8 /* CoreDataRepository.swift */; };
 		6A3F3CCD296D267200321EE8 /* iMessageDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CCB296D267200321EE8 /* iMessageDataModel.xcdatamodeld */; };
 		6A3F3CD0296D26F600321EE8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CCF296D26F600321EE8 /* Message.swift */; };
+		6A3F3CD1296D34A000321EE8 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CC9296D252800321EE8 /* CoreDataRepository.swift */; };
+		6A3F3CD2296D34AD00321EE8 /* DataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CBE296D211800321EE8 /* DataStack.swift */; };
+		6A3F3CD3296D34B700321EE8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CCF296D26F600321EE8 /* Message.swift */; };
+		6A3F3CD4296D34DE00321EE8 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CC7296D24BC00321EE8 /* RepositoryProtocol.swift */; };
+		6A3F3CD5296D34FD00321EE8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CC2296D21D800321EE8 /* Constant.swift */; };
+		6A3F3CD6296D350F00321EE8 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CC4296D233C00321EE8 /* URL.swift */; };
+		6A3F3CD7296D354600321EE8 /* iMessageDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CCB296D267200321EE8 /* iMessageDataModel.xcdatamodeld */; };
 		6A59F458296C55160036E61B /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59F457296C55160036E61B /* MessagesView.swift */; };
 		6A59F45A296C55240036E61B /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59F459296C55240036E61B /* MessagesViewModel.swift */; };
 		6A59F45D296C567B0036E61B /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59F45C296C567B0036E61B /* BaseView.swift */; };
@@ -413,7 +420,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A3F3CD4296D34DE00321EE8 /* RepositoryProtocol.swift in Sources */,
+				6A3F3CD1296D34A000321EE8 /* CoreDataRepository.swift in Sources */,
+				6A3F3CD3296D34B700321EE8 /* Message.swift in Sources */,
+				6A3F3CD6296D350F00321EE8 /* URL.swift in Sources */,
 				6AA00C16296BBFB0009FB656 /* MessagesViewController.swift in Sources */,
+				6A3F3CD2296D34AD00321EE8 /* DataStack.swift in Sources */,
+				6A3F3CD5296D34FD00321EE8 /* Constant.swift in Sources */,
+				6A3F3CD7296D354600321EE8 /* iMessageDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
