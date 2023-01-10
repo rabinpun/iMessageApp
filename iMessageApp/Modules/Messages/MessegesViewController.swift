@@ -13,8 +13,16 @@ class MessegesViewController: BaseController {
     
     lazy var viewModel: MessagesViewModel = { baseViewModel as! MessagesViewModel }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            let lastIndex = self.viewModel.messages.count - 1
+            self.screenView.collectionView.scrollToItem(at: IndexPath(row: lastIndex, section: 0), at: .bottom, animated: true)
+        }
+    }
+    
+    override func setupUI() {
+        screenView.collectionView.delegate = self
+        screenView.collectionView.dataSource = self
     }
 
 
