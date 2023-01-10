@@ -10,12 +10,21 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
+    let dataStack = AppDataStack()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = MessegesViewController(baseView: MessagesView(), baseViewModel: MessagesViewModel())
+        dataStack.setup { [unowned self] in
+            self.startApp()
+        }
+        
+    }
+    
+    private func startApp() {
+        let coreDataRepository = CoreDataRepository<Message.Object>.init(inMainContext: true, database: dataStack, relationEntities: [Message.entityName])
+        window?.rootViewController = MessegesViewController(baseView: MessagesView(), baseViewModel: MessagesViewModel(messagesRepository: coreDataRepository))
         window?.makeKeyAndVisible()
     }
 
