@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MessegesViewController: BaseController {
 
@@ -14,17 +15,42 @@ class MessegesViewController: BaseController {
     lazy var viewModel: MessagesViewModel = { baseViewModel as! MessagesViewModel }()
     
     override func viewDidAppear(_ animated: Bool) {
-        DispatchQueue.main.async {
-            let lastIndex = self.viewModel.messages.count - 1
-            self.screenView.collectionView.scrollToItem(at: IndexPath(row: lastIndex, section: 0), at: .bottom, animated: true)
-        }
+        let lastIndex = self.viewModel.messages.count - 1
+        self.screenView.collectionView.scrollToItem(at: IndexPath(row: lastIndex, section: 0), at: .bottom, animated: true)
     }
     
     override func setupUI() {
         screenView.collectionView.delegate = self
         screenView.collectionView.dataSource = self
+        
+        viewModel.fetchedResultsController.delegate = self
+        try! viewModel.fetchedResultsController.performFetch()
     }
 
 
+}
+
+//MARK: NSFetchedResultsController Delegate Functions
+extension MessegesViewController: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        debugPrint("content changed")
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+            switch type {
+            case .insert:
+                guard let newIndexPath = newIndexPath else { fatalError("Index path should be not nil") }
+                screenView.collectionView.insertItems(at: [newIndexPath])
+            case .update:
+                guard let indexPath = indexPath else { fatalError("Index path should be not nil") }
+                screenView.collectionView.reloadItems(at: [indexPath])
+            case .move:
+                break
+            case .delete:
+                guard let indexPath = indexPath else { fatalError("Index path should be not nil") }
+                screenView.collectionView.deleteItems(at: [indexPath])
+            @unknown default: break
+            }
+    }
 }
 
