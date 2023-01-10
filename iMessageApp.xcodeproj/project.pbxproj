@@ -10,6 +10,13 @@
 		6A3F3CB8296D0DCC00321EE8 /* MessagesViewController+CollectionVIewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CB7296D0DCC00321EE8 /* MessagesViewController+CollectionVIewDelegate.swift */; };
 		6A3F3CBA296D0E1C00321EE8 /* MessagesController+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CB9296D0E1C00321EE8 /* MessagesController+Datasource.swift */; };
 		6A3F3CBC296D11DA00321EE8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CBB296D11DA00321EE8 /* String.swift */; };
+		6A3F3CBF296D211800321EE8 /* DataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CBE296D211800321EE8 /* DataStack.swift */; };
+		6A3F3CC3296D21D800321EE8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CC2296D21D800321EE8 /* Constant.swift */; };
+		6A3F3CC5296D233C00321EE8 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CC4296D233C00321EE8 /* URL.swift */; };
+		6A3F3CC8296D24BC00321EE8 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CC7296D24BC00321EE8 /* RepositoryProtocol.swift */; };
+		6A3F3CCA296D252800321EE8 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CC9296D252800321EE8 /* CoreDataRepository.swift */; };
+		6A3F3CCD296D267200321EE8 /* iMessageDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CCB296D267200321EE8 /* iMessageDataModel.xcdatamodeld */; };
+		6A3F3CD0296D26F600321EE8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CCF296D26F600321EE8 /* Message.swift */; };
 		6A59F458296C55160036E61B /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59F457296C55160036E61B /* MessagesView.swift */; };
 		6A59F45A296C55240036E61B /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59F459296C55240036E61B /* MessagesViewModel.swift */; };
 		6A59F45D296C567B0036E61B /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59F45C296C567B0036E61B /* BaseView.swift */; };
@@ -58,6 +65,13 @@
 		6A3F3CB7296D0DCC00321EE8 /* MessagesViewController+CollectionVIewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessagesViewController+CollectionVIewDelegate.swift"; sourceTree = "<group>"; };
 		6A3F3CB9296D0E1C00321EE8 /* MessagesController+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessagesController+Datasource.swift"; sourceTree = "<group>"; };
 		6A3F3CBB296D11DA00321EE8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		6A3F3CBE296D211800321EE8 /* DataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStack.swift; sourceTree = "<group>"; };
+		6A3F3CC2296D21D800321EE8 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		6A3F3CC4296D233C00321EE8 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		6A3F3CC7296D24BC00321EE8 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
+		6A3F3CC9296D252800321EE8 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		6A3F3CCC296D267200321EE8 /* iMessageDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iMessageDataModel.xcdatamodel; sourceTree = "<group>"; };
+		6A3F3CCF296D26F600321EE8 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		6A59F457296C55160036E61B /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		6A59F459296C55240036E61B /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
 		6A59F45C296C567B0036E61B /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -102,6 +116,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A3F3CBD296D1F0400321EE8 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				6A3F3CCE296D26D600321EE8 /* Models */,
+				6A3F3CC6296D249900321EE8 /* Repositories */,
+				6A3F3CBE296D211800321EE8 /* DataStack.swift */,
+				6A3F3CCB296D267200321EE8 /* iMessageDataModel.xcdatamodeld */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		6A3F3CC6296D249900321EE8 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				6A3F3CC7296D24BC00321EE8 /* RepositoryProtocol.swift */,
+				6A3F3CC9296D252800321EE8 /* CoreDataRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		6A3F3CCE296D26D600321EE8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6A3F3CCF296D26F600321EE8 /* Message.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		6A59F456296C54720036E61B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +187,7 @@
 		6AA00BF7296BBE2D009FB656 /* iMessageApp */ = {
 			isa = PBXGroup;
 			children = (
+				6A3F3CBD296D1F0400321EE8 /* Database */,
 				6AA00C2E296BCC09009FB656 /* Asset */,
 				6A59F456296C54720036E61B /* Supporting Files */,
 				6AA00C2C296BCBD9009FB656 /* Helpers */,
@@ -217,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				6AA00C2D296BCBE2009FB656 /* Extensions */,
+				6A3F3CC2296D21D800321EE8 /* Constant.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -226,6 +270,7 @@
 			children = (
 				6A59F466296C5A640036E61B /* UICollectionViewCell.swift */,
 				6A3F3CBB296D11DA00321EE8 /* String.swift */,
+				6A3F3CC4296D233C00321EE8 /* URL.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -340,20 +385,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A3F3CC3296D21D800321EE8 /* Constant.swift in Sources */,
 				6A59F45A296C55240036E61B /* MessagesViewModel.swift in Sources */,
 				6A59F463296C577F0036E61B /* BaseController.swift in Sources */,
 				6A3F3CB8296D0DCC00321EE8 /* MessagesViewController+CollectionVIewDelegate.swift in Sources */,
+				6A3F3CBF296D211800321EE8 /* DataStack.swift in Sources */,
 				6A59F458296C55160036E61B /* MessagesView.swift in Sources */,
+				6A3F3CD0296D26F600321EE8 /* Message.swift in Sources */,
 				6A3F3CBC296D11DA00321EE8 /* String.swift in Sources */,
 				6AA00BFD296BBE2D009FB656 /* MessegesViewController.swift in Sources */,
 				6AA00C2B296BCBB5009FB656 /* MessageCell.swift in Sources */,
 				6A59F45D296C567B0036E61B /* BaseView.swift in Sources */,
+				6A3F3CC5296D233C00321EE8 /* URL.swift in Sources */,
 				6A59F467296C5A640036E61B /* UICollectionViewCell.swift in Sources */,
+				6A3F3CCA296D252800321EE8 /* CoreDataRepository.swift in Sources */,
 				6A59F461296C571B0036E61B /* BaseViewModel.swift in Sources */,
 				6A3F3CBA296D0E1C00321EE8 /* MessagesController+Datasource.swift in Sources */,
+				6A3F3CCD296D267200321EE8 /* iMessageDataModel.xcdatamodeld in Sources */,
 				6AA00BF9296BBE2D009FB656 /* AppDelegate.swift in Sources */,
 				6A59F465296C57E00036E61B /* AlertActionable.swift in Sources */,
 				6AA00BFB296BBE2D009FB656 /* SceneDelegate.swift in Sources */,
+				6A3F3CC8296D24BC00321EE8 /* RepositoryProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +708,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6A3F3CCB296D267200321EE8 /* iMessageDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6A3F3CCC296D267200321EE8 /* iMessageDataModel.xcdatamodel */,
+			);
+			currentVersion = 6A3F3CCC296D267200321EE8 /* iMessageDataModel.xcdatamodel */;
+			path = iMessageDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6AA00BED296BBE2D009FB656 /* Project object */;
 }
