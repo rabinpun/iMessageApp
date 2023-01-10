@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A3F3CB8296D0DCC00321EE8 /* MessagesViewController+CollectionVIewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CB7296D0DCC00321EE8 /* MessagesViewController+CollectionVIewDelegate.swift */; };
+		6A3F3CBA296D0E1C00321EE8 /* MessagesController+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CB9296D0E1C00321EE8 /* MessagesController+Datasource.swift */; };
+		6A3F3CBC296D11DA00321EE8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F3CBB296D11DA00321EE8 /* String.swift */; };
+		6A59F458296C55160036E61B /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59F457296C55160036E61B /* MessagesView.swift */; };
+		6A59F45A296C55240036E61B /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59F459296C55240036E61B /* MessagesViewModel.swift */; };
+		6A59F45D296C567B0036E61B /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59F45C296C567B0036E61B /* BaseView.swift */; };
+		6A59F461296C571B0036E61B /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59F460296C571B0036E61B /* BaseViewModel.swift */; };
+		6A59F463296C577F0036E61B /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59F462296C577F0036E61B /* BaseController.swift */; };
+		6A59F465296C57E00036E61B /* AlertActionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59F464296C57E00036E61B /* AlertActionable.swift */; };
+		6A59F467296C5A640036E61B /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59F466296C5A640036E61B /* UICollectionViewCell.swift */; };
 		6AA00BF9296BBE2D009FB656 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA00BF8296BBE2D009FB656 /* AppDelegate.swift */; };
 		6AA00BFB296BBE2D009FB656 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA00BFA296BBE2D009FB656 /* SceneDelegate.swift */; };
 		6AA00BFD296BBE2D009FB656 /* MessegesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA00BFC296BBE2D009FB656 /* MessegesViewController.swift */; };
@@ -45,6 +55,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6A3F3CB7296D0DCC00321EE8 /* MessagesViewController+CollectionVIewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessagesViewController+CollectionVIewDelegate.swift"; sourceTree = "<group>"; };
+		6A3F3CB9296D0E1C00321EE8 /* MessagesController+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessagesController+Datasource.swift"; sourceTree = "<group>"; };
+		6A3F3CBB296D11DA00321EE8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		6A59F457296C55160036E61B /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
+		6A59F459296C55240036E61B /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
+		6A59F45C296C567B0036E61B /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		6A59F460296C571B0036E61B /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		6A59F462296C577F0036E61B /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
+		6A59F464296C57E00036E61B /* AlertActionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertActionable.swift; sourceTree = "<group>"; };
+		6A59F466296C5A640036E61B /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 		6AA00BF5296BBE2D009FB656 /* iMessageApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMessageApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AA00BF8296BBE2D009FB656 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AA00BFA296BBE2D009FB656 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +110,17 @@
 				6AA00C06296BBE2F009FB656 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6A59F45B296C56720036E61B /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				6A59F45C296C567B0036E61B /* BaseView.swift */,
+				6A59F460296C571B0036E61B /* BaseViewModel.swift */,
+				6A59F462296C577F0036E61B /* BaseController.swift */,
+				6A59F464296C57E00036E61B /* AlertActionable.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		6AA00BEC296BBE2D009FB656 = {
@@ -145,6 +176,7 @@
 		6AA00C26296BC39D009FB656 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				6A59F45B296C56720036E61B /* Base */,
 				6AA00C28296BC3F4009FB656 /* Messages */,
 				6AA00C27296BC3B1009FB656 /* App */,
 			);
@@ -165,6 +197,10 @@
 			children = (
 				6AA00C29296BCBAB009FB656 /* Cells */,
 				6AA00BFC296BBE2D009FB656 /* MessegesViewController.swift */,
+				6A3F3CB7296D0DCC00321EE8 /* MessagesViewController+CollectionVIewDelegate.swift */,
+				6A3F3CB9296D0E1C00321EE8 /* MessagesController+Datasource.swift */,
+				6A59F457296C55160036E61B /* MessagesView.swift */,
+				6A59F459296C55240036E61B /* MessagesViewModel.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -188,6 +224,8 @@
 		6AA00C2D296BCBE2009FB656 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				6A59F466296C5A640036E61B /* UICollectionViewCell.swift */,
+				6A3F3CBB296D11DA00321EE8 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -302,9 +340,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A59F45A296C55240036E61B /* MessagesViewModel.swift in Sources */,
+				6A59F463296C577F0036E61B /* BaseController.swift in Sources */,
+				6A3F3CB8296D0DCC00321EE8 /* MessagesViewController+CollectionVIewDelegate.swift in Sources */,
+				6A59F458296C55160036E61B /* MessagesView.swift in Sources */,
+				6A3F3CBC296D11DA00321EE8 /* String.swift in Sources */,
 				6AA00BFD296BBE2D009FB656 /* MessegesViewController.swift in Sources */,
 				6AA00C2B296BCBB5009FB656 /* MessageCell.swift in Sources */,
+				6A59F45D296C567B0036E61B /* BaseView.swift in Sources */,
+				6A59F467296C5A640036E61B /* UICollectionViewCell.swift in Sources */,
+				6A59F461296C571B0036E61B /* BaseViewModel.swift in Sources */,
+				6A3F3CBA296D0E1C00321EE8 /* MessagesController+Datasource.swift in Sources */,
 				6AA00BF9296BBE2D009FB656 /* AppDelegate.swift in Sources */,
+				6A59F465296C57E00036E61B /* AlertActionable.swift in Sources */,
 				6AA00BFB296BBE2D009FB656 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
