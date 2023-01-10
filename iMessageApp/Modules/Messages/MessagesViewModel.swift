@@ -6,57 +6,29 @@
 //
 
 import Foundation
+import CoreData
 
 final class MessagesViewModel: BaseViewModel {
     
-    var messages = [
-        "Hello World!",
-        "This is the second message.",
-        "And this one is third.",
+    let messagesRepository: CoreDataRepository<Message.Object>
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Message> = {
+        let request = NSFetchRequest<Message>(entityName: Message.entityName)
+        let sort = NSSortDescriptor(key: #keyPath(Message.createdAt), ascending: true)
+         request.sortDescriptors = [sort]
+         request.fetchBatchSize = 20
+         request.returnsObjectsAsFaults = false
         
-            "Hello World!",
-            "This is the second message.",
-            "And this one is third.",
-        
-            "Hello World!",
-            "This is the second message.",
-            "And this one is third.",
-        
-            "Hello World!",
-            "This is the second message.",
-            "And this one is third.",
-        
-            "Hello World!",
-            "This is the second message.",
-            "And this one is third.",
-        
-            "Hello World!",
-            "This is the second message.",
-            "And this one is third.",
-        
-            "Hello World!",
-            "This is the second message.",
-            "And this one is third.",
-        
-            "Hello World!",
-            "This is the second message.",
-            "And this one is third.",
-        
-            "Hello World!",
-            "This is the second message.",
-            "And this one is third.",
-        "Hello World!",
-        "This is the second message.",
-        "And this one is third.",
-        "Hello World!",
-        "This is the second message.",
-        "And this one is third.",
-        "Hello World!",
-        "This is the second message.",
-        "And this one is third.",
-        "Hello World!",
-        "This is the second message.",
-        "And this one is third.",
-    ]
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: messagesRepository.getMainContext(), sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultsController
+    }()
+    
+    init(messagesRepository: CoreDataRepository<Message.Object>) {
+        self.messagesRepository = messagesRepository
+    }
+    
+    var messages: [Message] {
+        fetchedResultsController.fetchedObjects ?? []
+    }
     
 }

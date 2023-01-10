@@ -16,7 +16,7 @@ extension MessegesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let message = viewModel.messages[indexPath.row]
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MessageCell.identifier, for: indexPath) as? MessageCell else { fatalError("Invalid Cell") }
-        cell.configure(title: message)
+        cell.configure(title: message.message)
         return cell
     }
     
