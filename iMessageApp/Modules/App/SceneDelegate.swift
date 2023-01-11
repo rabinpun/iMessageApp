@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func startApp() {
         let coreDataRepository = CoreDataRepository<Message.Object>.init(inMainContext: true, database: dataStack, relationEntities: [Message.entityName])
-        window?.rootViewController = MessegesViewController(baseView: MessagesView(), baseViewModel: MessagesViewModel(messagesRepository: coreDataRepository))
+        window?.rootViewController = MessegeViewController(baseView: MessagesView(), baseViewModel: MessagesViewModel(messagesRepository: coreDataRepository))
         window?.makeKeyAndVisible()
     }
 
