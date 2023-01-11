@@ -10,13 +10,16 @@ import UIKit
 extension MessagesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        messages.count
+        messages.isEmpty ? 1 : messages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let message = messages[indexPath.row]
+        let message = messages.isEmpty ? "No saved messages." : messages[indexPath.row].message
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExtensionMessageCell.identifier, for: indexPath) as? MessageCell else { fatalError("Invalid Cell") }
-        cell.configure(title: message.message)
+        if messages.isEmpty {
+            cell.isUserInteractionEnabled = false
+        }
+        cell.configure(title: message)
         return cell
     }
     
