@@ -43,6 +43,7 @@
 		6AA00C1F296BBFB2009FB656 /* iMessageExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6AA00C10296BBFB0009FB656 /* iMessageExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6AA00C2B296BCBB5009FB656 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA00C2A296BCBB5009FB656 /* MessageCell.swift */; };
 		6AB6C0AB296D64E600CC5466 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6AB6C0AA296D64E600CC5466 /* IQKeyboardManagerSwift */; };
+		6ADA1B02296EB011008104BB /* UIBinding in Frameworks */ = {isa = PBXBuildFile; productRef = 6ADA1B01296EB011008104BB /* UIBinding */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ADA1B02296EB011008104BB /* UIBinding in Frameworks */,
 				6AB6C0AB296D64E600CC5466 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +314,7 @@
 			name = iMessageApp;
 			packageProductDependencies = (
 				6AB6C0AA296D64E600CC5466 /* IQKeyboardManagerSwift */,
+				6ADA1B01296EB011008104BB /* UIBinding */,
 			);
 			productName = iMessageApp;
 			productReference = 6AA00BF5296BBE2D009FB656 /* iMessageApp.app */;
@@ -363,6 +366,7 @@
 			mainGroup = 6AA00BEC296BBE2D009FB656;
 			packageReferences = (
 				6AB6C0A9296D64E600CC5466 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				6ADA1B00296EB011008104BB /* XCRemoteSwiftPackageReference "UIBinding" */,
 			);
 			productRefGroup = 6AA00BF6296BBE2D009FB656 /* Products */;
 			projectDirPath = "";
@@ -740,6 +744,14 @@
 				minimumVersion = 6.5.0;
 			};
 		};
+		6ADA1B00296EB011008104BB /* XCRemoteSwiftPackageReference "UIBinding" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rabinpun/UIBinding.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -747,6 +759,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6AB6C0A9296D64E600CC5466 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		6ADA1B01296EB011008104BB /* UIBinding */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6ADA1B00296EB011008104BB /* XCRemoteSwiftPackageReference "UIBinding" */;
+			productName = UIBinding;
 		};
 /* End XCSwiftPackageProductDependency section */
 
