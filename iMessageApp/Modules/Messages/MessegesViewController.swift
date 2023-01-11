@@ -46,7 +46,11 @@ class MessegesViewController: BaseController {
     @objc func doneButtonClicked(_ sender: Any) {
         
         let text = viewModel.messageTextModel.value
-        guard !text.isEmpty else { return }
+        guard !text.isEmpty else {
+            alert(title: "iMessage", msg: "Message should not be empty.", actions: [Alert.ok]).sink { _ in
+                
+            }.store(in: &viewModel.bag)
+            return }
         viewModel.messageTextModel.value = ""
         guard let currentIndexPath = currentIndexPath else { return }
         let isLast = currentIndexPath.row == viewModel.messages.count
