@@ -42,6 +42,7 @@
 		6AA00C1B296BBFB2009FB656 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AA00C1A296BBFB2009FB656 /* Assets.xcassets */; };
 		6AA00C1F296BBFB2009FB656 /* iMessageExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6AA00C10296BBFB0009FB656 /* iMessageExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6AA00C2B296BCBB5009FB656 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA00C2A296BCBB5009FB656 /* MessageCell.swift */; };
+		6AB6C0AB296D64E600CC5466 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6AB6C0AA296D64E600CC5466 /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AB6C0AB296D64E600CC5466 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +310,9 @@
 				6AA00C1E296BBFB2009FB656 /* PBXTargetDependency */,
 			);
 			name = iMessageApp;
+			packageProductDependencies = (
+				6AB6C0AA296D64E600CC5466 /* IQKeyboardManagerSwift */,
+			);
 			productName = iMessageApp;
 			productReference = 6AA00BF5296BBE2D009FB656 /* iMessageApp.app */;
 			productType = "com.apple.product-type.application";
@@ -356,6 +361,9 @@
 				Base,
 			);
 			mainGroup = 6AA00BEC296BBE2D009FB656;
+			packageReferences = (
+				6AB6C0A9296D64E600CC5466 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			productRefGroup = 6AA00BF6296BBE2D009FB656 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -722,6 +730,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6AB6C0A9296D64E600CC5466 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6AB6C0AA296D64E600CC5466 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AB6C0A9296D64E600CC5466 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		6A3F3CCB296D267200321EE8 /* iMessageDataModel.xcdatamodeld */ = {
