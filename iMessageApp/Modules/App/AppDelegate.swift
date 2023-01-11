@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        true
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.toolbarBarTintColor = .black
+        IQKeyboardManager.shared.toolbarTintColor = .white
+        return true
     }
 
     // MARK: UISceneSession Lifecycle
