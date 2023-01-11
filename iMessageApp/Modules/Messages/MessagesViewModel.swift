@@ -29,6 +29,7 @@ final class MessagesViewModel: BaseViewModel {
     }
     
     var messageTextModel = UIControlBinding<UITextField, String>()
+    var deleteTextModel = UIControlBinding<UIButton, Bool>()
     
     init(messagesRepository: CoreDataRepository<Message.Object>) {
         self.messagesRepository = messagesRepository
@@ -46,6 +47,15 @@ final class MessagesViewModel: BaseViewModel {
         do {
             let messagePredicate = NSPredicate(format: "%K == %@", #keyPath(Message.id) , message.id)
             try messagesRepository.update(predicate: messagePredicate, with: Message.Object(id: message.id, message: text, createdAt: message.createdAt))
+        } catch {
+            debugPrint(error.localizedDescription)
+        }
+    }
+    
+    func deleteMessage(id: String) {
+        do {
+            let messagePredicate = NSPredicate(format: "%K == %@", #keyPath(Message.id) , id)
+            try messagesRepository.delete(predicate: messagePredicate)
         } catch {
             debugPrint(error.localizedDescription)
         }

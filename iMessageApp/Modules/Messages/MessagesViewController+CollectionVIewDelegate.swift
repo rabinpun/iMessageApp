@@ -24,17 +24,47 @@ extension MessegesViewController: UICollectionViewDelegate, UICollectionViewDele
         guard let messageCell = collectionView.cellForItem(at: indexPath) as? MessageCell else { return }
         let isLastMessage = indexPath.row == viewModel.messages.count
         currentIndexPath = indexPath
+        
+        //text update functionality
         let messageTextModel = UIControlBinding<UITextField, String>()
         viewModel.messageTextModel = messageTextModel
         messageTextModel.bind(messageCell.textField.binder())
         messageTextModel.value = isLastMessage ? "" : messageCell.label.text ?? ""
-        messageTextModel.dropFirst().sink { value in
-            guard let currentIndexPath = self.currentIndexPath else { return }
-            guard let cell = self.screenView.collectionView.cellForItem(at: currentIndexPath) as? MessageCell else { return }
-            cell.label.text = value
+        messageTextModel.dropFirst().sink { [weak self] value in
+            self?.updateSelectedCellText(value)
         }.store(in: &viewModel.bag)
+        
+        //Delete functionality
+        let deleteButtonModel = UIControlBinding<UIButton, Bool>()
+        deleteButtonModel.bind(messageCell.deleteButton.binder())
+        viewModel.deleteTextModel = deleteButtonModel
+        deleteButtonModel.dropFirst().sink { [weak self] _ in
+            self?.showDeleteAlert()
+        }.store(in: &viewModel.bag)
+        
+        //Update delete functionality
         messageCell.textField.addDoneOnKeyboardWithTarget(self, action: #selector(doneButtonClicked), titleText: "Done")
         messageCell.textField.becomeFirstResponder()
+    }
+    
+    private func updateSelectedCellText(_ text: String) {
+        guard let currentIndexPath = currentIndexPath else { return }
+        guard let cell = screenView.collectionView.cellForItem(at: currentIndexPath) as? MessageCell else { return }
+        cell.label.text = text
+    }
+    
+    private func showDeleteAlert() {
+        alert(title: "iMessage", msg: "Are you sure you want to delete this message ?", actions: [Alert.delete, Alert.cancel]).sink { [weak self] alertAction in
+            guard let self = self else { return }
+            switch alertAction {
+                case Alert.delete:
+                    guard let currentIndexPath = self.currentIndexPath else { return }
+                    self.view.endEditing(true)
+                    self.viewModel.deleteMessage(id: self.viewModel.messages[currentIndexPath.row].id)
+                default:
+                    break
+            }
+        }.store(in: &viewModel.bag)
     }
     
 }

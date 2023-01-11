@@ -8,16 +8,21 @@
 import Foundation
 
 enum Alert: AlertActionable {
-    case ok
+    case ok, delete, cancel
     
     var title: String {
         switch self {
             case .ok: return "Ok"
+            case .delete: return "Delete"
+            case .cancel: return "Cancel"
         }
     }
     
     var destructive: Bool {
-        false
+        switch self {
+            case .ok, .cancel: return false
+            case .delete: return true
+        }
     }
 }
 

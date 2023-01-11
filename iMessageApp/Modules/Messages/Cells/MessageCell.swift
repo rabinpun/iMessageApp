@@ -46,9 +46,26 @@ final class MessageCell: UICollectionViewCell {
             return textField
         }()
     
+        lazy var deleteButton: UIButton = {
+            let button = UIButton()
+            button.setImage(UIImage(systemName: "multiply"), for: .normal)
+            button.tintColor = .systemRed
+            button.translatesAutoresizingMaskIntoConstraints = false
+            return button
+        }()
+    
+        var canBeDeleted = true
+    
         override var isSelected: Bool {
             didSet {
-                wrapperView.backgroundColor = isSelected ? .lightGray : .systemGreen
+                wrapperView.backgroundColor = isSelected ? .white : .systemGreen
+                label.textColor = isSelected ? .lightGray : .white
+//                wrapperView.backgroundColor = isSelected ? .white : .systemGreen
+                if canBeDeleted {
+                    buttonWidthConstraint.constant = isSelected ? 20 : 0
+                } else {
+                    buttonWidthConstraint.constant = 0
+                }
             }
         }
         
@@ -64,30 +81,42 @@ final class MessageCell: UICollectionViewCell {
         override func prepareForReuse() {
             super.prepareForReuse()
             label.text = ""
+            canBeDeleted = true
         }
         
         private func setup() {
             addSubviews()
         }
+    
+    private var buttonWidthConstraint: NSLayoutConstraint!
         
         func addSubviews() {
             contentView.addSubview(wrapperView)
             wrapperView.addSubview(label)
+            wrapperView.addSubview(deleteButton)
             contentView.addSubview(textField)
             contentView.addSubview(expanderView)
+            
+            buttonWidthConstraint = deleteButton.widthAnchor.constraint(equalToConstant: 0)
             
             NSLayoutConstraint.activate([
                 wrapperView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
                 wrapperView.trailingAnchor.constraint(equalTo: expanderView.leadingAnchor),
                 wrapperView.topAnchor.constraint(equalTo: contentView.topAnchor),
                 wrapperView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+                
+                deleteButton.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 5),
+                deleteButton.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
+                deleteButton.topAnchor.constraint(equalTo: label.topAnchor),
+                deleteButton.bottomAnchor.constraint(equalTo: label.bottomAnchor),
+                buttonWidthConstraint,
     
                 expanderView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
                 expanderView.topAnchor.constraint(equalTo: contentView.topAnchor),
                 expanderView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
                 
                 label.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor, constant: 5),
-                label.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -5),
+//                label.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -5),
                 label.topAnchor.constraint(equalTo: wrapperView.topAnchor, constant: 5),
                 label.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor, constant: -5),
             ])
@@ -95,6 +124,7 @@ final class MessageCell: UICollectionViewCell {
         
     func configure(title: String, isLastMessage: Bool = false) {
         label.text = title
+        canBeDeleted = !isLastMessage
         wrapperView.backgroundColor = isLastMessage ? .systemBlue : .systemGreen
     }
     

@@ -63,7 +63,11 @@ class MessegesViewController: BaseController {
         self.currentIndexPath = nil
         screenView.endEditing(true)
         screenView.collectionView.deselectItem(at: currentIndexPath, animated: true)
-        if isLast { scrollToLast() }
+        if isLast {
+            scrollToLast()
+        } else {
+            self.screenView.collectionView.scrollToItem(at: currentIndexPath, at: .centeredVertically, animated: true)
+        }
     }
 
 
