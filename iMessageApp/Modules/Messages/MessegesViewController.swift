@@ -35,9 +35,6 @@ class MessegesViewController: BaseController {
         
     }
     
-    override func observeEvents() {
-    }
-    
     func bindTextModelTo(textField: UITextField) {
         viewModel.messageTextModel.bind(textField.binder())
         textField.keyboardToolbar.doneBarButton.setTarget(self, action: #selector(doneButtonClicked))
@@ -68,32 +65,6 @@ class MessegesViewController: BaseController {
         } else {
             screenView.collectionView.scrollToItem(at: currentSelectedIndexPath, at: .centeredVertically, animated: true)
         }
-    }
-
-
-}
-
-//MARK: NSFetchedResultsController Delegate Functions
-extension MessegesViewController: NSFetchedResultsControllerDelegate {
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        debugPrint("content changed")
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-            switch type {
-            case .insert:
-                guard let newIndexPath = newIndexPath else { fatalError("Index path should be not nil") }
-                screenView.collectionView.reloadItems(at: [newIndexPath])
-            case .update:
-                guard let indexPath = indexPath else { fatalError("Index path should be not nil") }
-                screenView.collectionView.reloadItems(at: [indexPath])
-            case .move:
-                break
-            case .delete:
-                guard let indexPath = indexPath else { fatalError("Index path should be not nil") }
-                screenView.collectionView.deleteItems(at: [indexPath])
-            @unknown default: break
-            }
     }
 }
 
