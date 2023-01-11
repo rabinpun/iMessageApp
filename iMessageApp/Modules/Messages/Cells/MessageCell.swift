@@ -7,7 +7,26 @@
 
 import UIKit
 
-final class MessageCell: UICollectionViewCell {
+final class ExtensionMessageCell: MessageCell {
+    
+    override var actionButtonImage: UIImage? {
+        UIImage(systemName: "checkmark")
+    }
+
+    override var actionButtonTintColor: UIColor {
+        .systemGreen
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            wrapperView.backgroundColor = isSelected ? .white : .systemGreen
+            buttonWidthConstraint.constant = isSelected ? 20 : 0
+        }
+    }
+    
+}
+
+class MessageCell: UICollectionViewCell {
     
         lazy var wrapperView: UIView = {
             let view = UIView()
@@ -46,10 +65,18 @@ final class MessageCell: UICollectionViewCell {
             return textField
         }()
     
+        var actionButtonImage: UIImage? {
+            UIImage(systemName: "multiply")
+        }
+    
+        var actionButtonTintColor: UIColor {
+            .systemRed
+        }
+    
         lazy var deleteButton: UIButton = {
             let button = UIButton()
-            button.setImage(UIImage(systemName: "multiply"), for: .normal)
-            button.tintColor = .systemRed
+            button.setImage(actionButtonImage, for: .normal)
+            button.tintColor = actionButtonTintColor
             button.translatesAutoresizingMaskIntoConstraints = false
             return button
         }()
@@ -60,7 +87,6 @@ final class MessageCell: UICollectionViewCell {
             didSet {
                 wrapperView.backgroundColor = isSelected ? .white : .systemGreen
                 label.textColor = isSelected ? .lightGray : .white
-//                wrapperView.backgroundColor = isSelected ? .white : .systemGreen
                 if canBeDeleted {
                     buttonWidthConstraint.constant = isSelected ? 20 : 0
                 } else {
@@ -82,13 +108,14 @@ final class MessageCell: UICollectionViewCell {
             super.prepareForReuse()
             label.text = ""
             canBeDeleted = true
+            isUserInteractionEnabled = true
         }
         
         private func setup() {
             addSubviews()
         }
     
-    private var buttonWidthConstraint: NSLayoutConstraint!
+        var buttonWidthConstraint: NSLayoutConstraint!
         
         func addSubviews() {
             contentView.addSubview(wrapperView)
@@ -106,7 +133,7 @@ final class MessageCell: UICollectionViewCell {
                 wrapperView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
                 
                 deleteButton.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 5),
-                deleteButton.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
+                deleteButton.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -5),
                 deleteButton.topAnchor.constraint(equalTo: label.topAnchor),
                 deleteButton.bottomAnchor.constraint(equalTo: label.bottomAnchor),
                 buttonWidthConstraint,
@@ -116,7 +143,6 @@ final class MessageCell: UICollectionViewCell {
                 expanderView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
                 
                 label.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor, constant: 5),
-//                label.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -5),
                 label.topAnchor.constraint(equalTo: wrapperView.topAnchor, constant: 5),
                 label.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor, constant: -5),
             ])

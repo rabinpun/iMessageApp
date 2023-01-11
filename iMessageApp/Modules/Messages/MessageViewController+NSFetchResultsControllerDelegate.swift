@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 //MARK: NSFetchedResultsController Delegate Functions
-extension MessegesViewController: NSFetchedResultsControllerDelegate {
+extension MessegeViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         debugPrint("content changed")
     }

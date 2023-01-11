@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import UIBinding
 
-class MessegesViewController: BaseController {
+class MessegeViewController: BaseController {
     
     lazy var screenView: MessagesView = { baseView as! MessagesView }()
     

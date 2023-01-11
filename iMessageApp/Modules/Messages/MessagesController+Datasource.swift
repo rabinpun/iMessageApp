@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension MessegesViewController: UICollectionViewDataSource {
+extension MessegeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.messages.count + 1
