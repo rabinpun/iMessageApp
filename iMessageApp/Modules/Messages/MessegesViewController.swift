@@ -20,11 +20,11 @@ class MessegesViewController: BaseController {
     }
     
     private func scrollToLast() {
-        let lastIndex = self.viewModel.messages.count
-        self.screenView.collectionView.scrollToItem(at: IndexPath(row: lastIndex, section: 0), at: .bottom, animated: true)
+        let lastIndex = viewModel.messages.count
+        screenView.collectionView.scrollToItem(at: IndexPath(row: lastIndex, section: 0), at: .bottom, animated: true)
     }
     
-    var currentIndexPath: IndexPath?
+    var currentSelectedIndexPath: IndexPath?
     
     override func setupUI() {
         screenView.collectionView.delegate = self
@@ -52,21 +52,21 @@ class MessegesViewController: BaseController {
             }.store(in: &viewModel.bag)
             return }
         viewModel.messageTextModel.value = ""
-        guard let currentIndexPath = currentIndexPath else { return }
-        let isLast = currentIndexPath.row == viewModel.messages.count
+        guard let currentSelectedIndexPath = currentSelectedIndexPath else { return }
+        let isLast = currentSelectedIndexPath.row == viewModel.messages.count
         if !isLast {
-            let message = viewModel.messages[currentIndexPath.row].createObject()
+            let message = viewModel.messages[currentSelectedIndexPath.row].createObject()
             viewModel.updateMessage(message: message, text)
         } else {
             viewModel.addMessage(text)
         }
-        self.currentIndexPath = nil
+        self.currentSelectedIndexPath = nil
         screenView.endEditing(true)
-        screenView.collectionView.deselectItem(at: currentIndexPath, animated: true)
+        screenView.collectionView.deselectItem(at: currentSelectedIndexPath, animated: true)
         if isLast {
             scrollToLast()
         } else {
-            self.screenView.collectionView.scrollToItem(at: currentIndexPath, at: .centeredVertically, animated: true)
+            screenView.collectionView.scrollToItem(at: currentSelectedIndexPath, at: .centeredVertically, animated: true)
         }
     }
 

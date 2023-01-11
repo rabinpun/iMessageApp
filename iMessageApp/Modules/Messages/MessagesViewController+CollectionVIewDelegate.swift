@@ -23,7 +23,7 @@ extension MessegesViewController: UICollectionViewDelegate, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let messageCell = collectionView.cellForItem(at: indexPath) as? MessageCell else { return }
         let isLastMessage = indexPath.row == viewModel.messages.count
-        currentIndexPath = indexPath
+        currentSelectedIndexPath = indexPath
         
         //text update functionality
         let messageTextModel = UIControlBinding<UITextField, String>()
@@ -48,7 +48,7 @@ extension MessegesViewController: UICollectionViewDelegate, UICollectionViewDele
     }
     
     private func updateSelectedCellText(_ text: String) {
-        guard let currentIndexPath = currentIndexPath else { return }
+        guard let currentIndexPath = currentSelectedIndexPath else { return }
         guard let cell = screenView.collectionView.cellForItem(at: currentIndexPath) as? MessageCell else { return }
         cell.label.text = text
     }
@@ -58,7 +58,7 @@ extension MessegesViewController: UICollectionViewDelegate, UICollectionViewDele
             guard let self = self else { return }
             switch alertAction {
                 case Alert.delete:
-                    guard let currentIndexPath = self.currentIndexPath else { return }
+                    guard let currentIndexPath = self.currentSelectedIndexPath else { return }
                     self.view.endEditing(true)
                     self.viewModel.deleteMessage(id: self.viewModel.messages[currentIndexPath.row].id)
                 default:
