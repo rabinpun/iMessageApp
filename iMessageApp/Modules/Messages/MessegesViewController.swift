@@ -10,15 +10,21 @@ import CoreData
 import UIBinding
 
 class MessegesViewController: BaseController {
-
+    
     lazy var screenView: MessagesView = { baseView as! MessagesView }()
     
     lazy var viewModel: MessagesViewModel = { baseViewModel as! MessagesViewModel }()
     
     override func viewDidAppear(_ animated: Bool) {
-        let lastIndex = self.viewModel.messages.count - 1
+        scrollToLast()
+    }
+    
+    private func scrollToLast() {
+        let lastIndex = self.viewModel.messages.count
         self.screenView.collectionView.scrollToItem(at: IndexPath(row: lastIndex, section: 0), at: .bottom, animated: true)
     }
+    
+    var currentIndexPath: IndexPath?
     
     override func setupUI() {
         screenView.collectionView.delegate = self
@@ -27,20 +33,33 @@ class MessegesViewController: BaseController {
         viewModel.fetchedResultsController.delegate = self
         try! viewModel.fetchedResultsController.performFetch()
         
-        viewModel.messageTextModel.bind(screenView.textField.binder())
-        screenView.textField.keyboardToolbar.doneBarButton.setTarget(self, action: #selector(doneButtonClicked))
     }
     
     override func observeEvents() {
-        viewModel.messageTextModel.sink { value in
-            print(value)
-        }.store(in: &viewModel.bag)
+    }
+    
+    func bindTextModelTo(textField: UITextField) {
+        viewModel.messageTextModel.bind(textField.binder())
+        textField.keyboardToolbar.doneBarButton.setTarget(self, action: #selector(doneButtonClicked))
     }
     
     @objc func doneButtonClicked(_ sender: Any) {
+        
         let text = viewModel.messageTextModel.value
+        guard !text.isEmpty else { return }
         viewModel.messageTextModel.value = ""
-        viewModel.addMessage(text)
+        guard let currentIndexPath = currentIndexPath else { return }
+        let isLast = currentIndexPath.row == viewModel.messages.count
+        if !isLast {
+            let message = viewModel.messages[currentIndexPath.row].createObject()
+            viewModel.updateMessage(message: message, text)
+        } else {
+            viewModel.addMessage(text)
+        }
+        self.currentIndexPath = nil
+        screenView.endEditing(true)
+        screenView.collectionView.deselectItem(at: currentIndexPath, animated: true)
+        if isLast { scrollToLast() }
     }
 
 
@@ -56,7 +75,7 @@ extension MessegesViewController: NSFetchedResultsControllerDelegate {
             switch type {
             case .insert:
                 guard let newIndexPath = newIndexPath else { fatalError("Index path should be not nil") }
-                screenView.collectionView.insertItems(at: [newIndexPath])
+                screenView.collectionView.reloadItems(at: [newIndexPath])
             case .update:
                 guard let indexPath = indexPath else { fatalError("Index path should be not nil") }
                 screenView.collectionView.reloadItems(at: [indexPath])

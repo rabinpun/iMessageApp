@@ -37,6 +37,20 @@ final class MessageCell: UICollectionViewCell {
             view.translatesAutoresizingMaskIntoConstraints = false
             return view
         }()
+    
+        lazy var textField: UITextField = {
+            let textField = UITextField()
+            textField.tintColor = .clear
+            textField.textColor = .clear
+            textField.isHidden = true
+            return textField
+        }()
+    
+        override var isSelected: Bool {
+            didSet {
+                wrapperView.backgroundColor = isSelected ? .lightGray : .systemGreen
+            }
+        }
         
         override init(frame: CGRect) {
             super.init(frame: frame)
@@ -59,6 +73,7 @@ final class MessageCell: UICollectionViewCell {
         func addSubviews() {
             contentView.addSubview(wrapperView)
             wrapperView.addSubview(label)
+            contentView.addSubview(textField)
             contentView.addSubview(expanderView)
             
             NSLayoutConstraint.activate([
@@ -78,8 +93,9 @@ final class MessageCell: UICollectionViewCell {
             ])
         }
         
-    func configure(title: String) {
+    func configure(title: String, isLastMessage: Bool = false) {
         label.text = title
+        wrapperView.backgroundColor = isLastMessage ? .systemBlue : .systemGreen
     }
     
 }

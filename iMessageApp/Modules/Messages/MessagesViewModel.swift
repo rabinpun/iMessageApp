@@ -28,7 +28,7 @@ final class MessagesViewModel: BaseViewModel {
         fetchedResultsController.fetchedObjects ?? []
     }
     
-    let messageTextModel = UIControlBinding<UITextField, String>()
+    var messageTextModel = UIControlBinding<UITextField, String>()
     
     init(messagesRepository: CoreDataRepository<Message.Object>) {
         self.messagesRepository = messagesRepository
@@ -37,6 +37,15 @@ final class MessagesViewModel: BaseViewModel {
     func addMessage(_ text: String) {
         do {
             try messagesRepository.create(with: Message.Object(id: UUID().uuidString, message: text, createdAt: Date()))
+        } catch {
+            debugPrint(error.localizedDescription)
+        }
+    }
+    
+    func updateMessage(message: Message.Object,_ text: String) {
+        do {
+            let messagePredicate = NSPredicate(format: "%K == %@", #keyPath(Message.id) , message.id)
+            try messagesRepository.update(predicate: messagePredicate, with: Message.Object(id: message.id, message: text, createdAt: message.createdAt))
         } catch {
             debugPrint(error.localizedDescription)
         }

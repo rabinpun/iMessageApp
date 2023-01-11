@@ -45,42 +45,22 @@ final class MessagesView: BaseView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.register(MessageCell.self, forCellWithReuseIdentifier: MessageCell.identifier)
         collectionView.backgroundColor = .clear
+        collectionView.allowsMultipleSelection = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
-    }()
-    
-    lazy var textField: CustomTextField = {
-        let textField = CustomTextField()
-        textField.textColor = .black
-        textField.leftViewMode = .always
-        let leftImageView = UIImageView(image: UIImage(systemName: "envelope"))
-        leftImageView.contentMode = .scaleAspectFill
-        leftImageView.tintColor = .gray
-        textField.leftView = leftImageView
-        textField.font = .systemFont(ofSize: 14)
-        textField.placeholder = "Enter a new message..."
-        textField.backgroundColor = .black.withAlphaComponent(0.1)
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
     }()
     
     override func create() {
         backgroundColor = .white
         
         addSubview(collectionView)
-        addSubview(textField)
         
         NSLayoutConstraint.activate([
             
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
-            collectionView.bottomAnchor.constraint(equalTo: textField.topAnchor),
-            
-            textField.leadingAnchor.constraint(equalTo: leadingAnchor),
-            textField.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textField.heightAnchor.constraint(equalToConstant: 50),
-            textField.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
     }
     
