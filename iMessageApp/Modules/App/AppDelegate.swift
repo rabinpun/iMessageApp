@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.toolbarBarTintColor = .black
         IQKeyboardManager.shared.toolbarTintColor = .white
+        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Add"
         return true
     }
 
