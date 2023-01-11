@@ -5,8 +5,9 @@
 //  Created by ebpearls on 09/01/2023.
 //
 
-import Foundation
+import UIKit
 import CoreData
+import UIBinding
 
 final class MessagesViewModel: BaseViewModel {
     
@@ -23,12 +24,22 @@ final class MessagesViewModel: BaseViewModel {
         return fetchedResultsController
     }()
     
+    var messages: [Message] {
+        fetchedResultsController.fetchedObjects ?? []
+    }
+    
+    let messageTextModel = UIControlBinding<UITextField, String>()
+    
     init(messagesRepository: CoreDataRepository<Message.Object>) {
         self.messagesRepository = messagesRepository
     }
     
-    var messages: [Message] {
-        fetchedResultsController.fetchedObjects ?? []
+    func addMessage(_ text: String) {
+        do {
+            try messagesRepository.create(with: Message.Object(id: UUID().uuidString, message: text, createdAt: Date()))
+        } catch {
+            debugPrint(error.localizedDescription)
+        }
     }
     
 }

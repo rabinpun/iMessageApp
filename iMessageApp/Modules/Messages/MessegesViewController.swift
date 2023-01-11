@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import UIBinding
 
 class MessegesViewController: BaseController {
 
@@ -25,6 +26,21 @@ class MessegesViewController: BaseController {
         
         viewModel.fetchedResultsController.delegate = self
         try! viewModel.fetchedResultsController.performFetch()
+        
+        viewModel.messageTextModel.bind(screenView.textField.binder())
+        screenView.textField.keyboardToolbar.doneBarButton.setTarget(self, action: #selector(doneButtonClicked))
+    }
+    
+    override func observeEvents() {
+        viewModel.messageTextModel.sink { value in
+            print(value)
+        }.store(in: &viewModel.bag)
+    }
+    
+    @objc func doneButtonClicked(_ sender: Any) {
+        let text = viewModel.messageTextModel.value
+        viewModel.messageTextModel.value = ""
+        viewModel.addMessage(text)
     }
 
 
