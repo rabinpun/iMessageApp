@@ -42,7 +42,7 @@ class MessageCell: UICollectionViewCell {
         
         lazy var label: UILabel = {
             let label = UILabel()
-            label.font = .systemFont(ofSize: 14)
+            label.font = .systemFont(ofSize: 20)
             label.textColor = UIColor.white
             label.textAlignment = .left
             label.numberOfLines = 0
